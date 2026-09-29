@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swetha Rajshahi Cosmetic And Pharmacy</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #0ea5e9;
+            --primary-dark: #0284c7;
+            --accent: #10b981;
+            --danger: #ef4444;
+            --danger-dark: #dc2626;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        /* Header Styling */
+        header {
+            background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+            color: white;
+            padding: 20px 25px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.3);
+            margin-bottom: 25px;
+        }
+
+        header i {
+            font-size: 38px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 12px;
+            border-radius: 12px;
+        }
+
+        header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        header p {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        /* Card Layout */
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 25px;
+            border: 1px solid var(--border);
+        }
+
+        .card h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 18px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card h2 i {
+            color: var(--primary);
+        }
+
+        /* Form Controls */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        label {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        input {
+            padding: 12px 15px;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.15);
+        }
+
+        .btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+            margin-top: auto;
+        }
+
+        .btn:hover {
+            background: #059669;
+            transform: translateY(-1px);
+        }
+
+        .btn-delete {
+            background: var(--danger);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: background 0.2s ease;
+        }
+
+        .btn-delete:hover {
+            background: var(--danger-dark);
+        }
+
+        /* Search Bar */
+        .search-box {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        .search-box input {
+            width: 100%;
+            padding-left: 45px;
+        }
+
+        /* Table Styling */
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 14px 15px;
+            border-bottom: 1px solid var(--border);
+            font-size: 14px;
+        }
+
+        th {
+            background: #f1f5f9;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        tr:hover td {
+            background: #f8fafc;
+        }
+
+        .container-badge {
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 12px;
+            display: inline-block;
+        }
+
+        .no-data {
+            text-align: center;
+            color: var(--text-muted);
+            padding: 30px;
+            font-style: italic;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Top Header -->
+        <header>
+            <i class="fa-solid fa-house-medical"></i>
+            <div>
+                <h1>Swetha Rajshahi Cosmetic And Pharmacy</h1>
+                <p>Smart Medicine Location & Inventory Tracker</p>
+            </div>
+        </header>
+
+        <!-- Add Medicine Section -->
+        <div class="card">
+            <h2><i class="fa-solid fa-circle-plus"></i> Add New Medicine Location</h2>
+            <form id="medicineForm" class="form-grid">
+                <div class="form-group">
+                    <label>Medicine Name *</label>
+                    <input type="text" id="medName" placeholder="e.g. Paracetamol 650" required>
+                </div>
+                <div class="form-group">
+                    <label>Container No *</label>
+                    <input type="text" id="containerNo" placeholder="e.g. G1, A2, Box 3" required>
+                </div>
+                <div class="form-group">
+                    <label>MRP (Optional)</label>
+                    <input type="number" step="0.01" id="mrp" placeholder="e.g. 55.00">
+                </div>
+                <div class="form-group">
+                    <label>Sale Price (Optional)</label>
+                    <input type="number" step="0.01" id="salePrice" placeholder="e.g. 48.50">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn">
+                        <i class="fa-solid fa-save"></i> Save Medicine
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Search Section -->
+        <div class="card">
+            <h2><i class="fa-solid fa-magnifying-glass"></i> Search Medicine Location</h2>
+            <div class="search-box">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Type letters or full name to search medicine...">
+            </div>
+
+            <!-- Medicine List Table -->
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Medicine Name</th>
+                            <th>Container No</th>
+                            <th>MRP</th>
+                            <th>Sale Price</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="medicineTableBody">
+                        <!-- Dynamic rows will appear here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // LocalStorage se data load karna ya default empty array rakhna
+        let medicines = JSON.parse(localStorage.getItem('pharmacy_medicines')) || [
+            { id: 1, name: "Paracetamol 650mg", container: "G1", mrp: "35.00", sale: "30.00" },
+            { id: 2, name: "Azithromycin 500mg", container: "Container 1", mrp: "120.00", sale: "105.00" },
+            { id: 3, name: "Pan-D Capsule", container: "A2", mrp: "115.00", sale: "95.00" }
+        ];
+
+        const form = document.getElementById('medicineForm');
+        const searchInput = document.getElementById('searchInput');
+        const tableBody = document.getElementById('medicineTableBody');
+
+        // Table render karne ka function
+        function renderTable(dataToDisplay) {
+            tableBody.innerHTML = '';
+            
+            if (dataToDisplay.length === 0) {
+                tableBody.innerHTML = `<tr><td colspan="5" class="no-data">No medicine found! Add a new one above.</td></tr>`;
+                return;
+            }
+
+            dataToDisplay.forEach((med) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><strong>${med.name}</strong></td>
+                    <td><span class="container-badge"><i class="fa-solid fa-box"></i> ${med.container}</span></td>
+                    <td>${med.mrp ? '₹' + med.mrp : '-'}</td>
+                    <td>${med.sale ? '₹' + med.sale : '-'}</td>
+                    <td>
+                        <button class="btn-delete" onclick="deleteMedicine(${med.id})">
+                            <i class="fa-solid fa-trash"></i> Remove
+                        </button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Form submit hone par naye data ko save karna
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('medName').value.trim();
+            const container = document.getElementById('containerNo').value.trim();
+            const mrp = document.getElementById('mrp').value.trim();
+            const salePrice = document.getElementById('salePrice').value.trim();
+
+            const newMedicine = {
+                id: Date.now(), 
+                name: name,
+                container: container,
+                mrp: mrp,
+                sale: salePrice
+            };
+
+            medicines.unshift(newMedicine); 
+            localStorage.setItem('pharmacy_medicines', JSON.stringify(medicines));
+            
+            form.reset();
+            searchInput.value = '';
+            renderTable(medicines);
+        });
+
+        // Security PIN ke sath Medicine delete karne ka function
+        function deleteMedicine(id) {
+            const enteredPin = prompt("Security PIN enter karein (Medicine hatane ke liye '0000' daalein):");
+            
+            if (enteredPin === null) {
+                return; // Agar cancel dabaya toh kuch mat karo
+            }
+
+            if (enteredPin === "0000") {
+                medicines = medicines.filter(med => med.id !== id);
+                localStorage.setItem('pharmacy_medicines', JSON.stringify(medicines));
+                
+                // Refresh table based on current search input
+                const query = searchInput.value.toLowerCase().trim();
+                if(query) {
+                    const filtered = medicines.filter(med => 
+                        med.name.toLowerCase().includes(query) || 
+                        med.container.toLowerCase().includes(query)
+                    );
+                    renderTable(filtered);
+                } else {
+                    renderTable(medicines);
+                }
+                alert("Medicine safaltaपूर्वक hata di gayi hai!");
+            } else {
+                alert("Galat PIN! Medicine remove nahi ki ja sakti.");
+            }
+        }
+
+        // Search bar functionality
+        searchInput.addEventListener('input', function(e) {
+            const query = e.target.value.toLowerCase().trim();
+            const filtered = medicines.filter(med => 
+                med.name.toLowerCase().includes(query) || 
+                med.container.toLowerCase().includes(query)
+            );
+            renderTable(filtered);
+        });
+
+        // Initial load par table render karna
+        renderTable(medicines);
+    </script>
+</body>
+</html>
